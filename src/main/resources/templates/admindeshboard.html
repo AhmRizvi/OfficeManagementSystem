@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+	integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+	crossorigin="anonymous"></script>
+<style>
+body {
+	font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+	height: 100%;
+	width: 240px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: white;
+	overflow-x: hidden;
+	padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 17px;
+	color: #818181;
+	display: block;
+	border: none;
+	background: none;
+	width: 100%;
+	text-align: left;
+	cursor: pointer;
+	outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+	color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+	margin-left: 200px; /* Same as the width of the sidenav */
+	font-size: 20px; /* Increased text to enable scrolling */
+	padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+	background-color: green;
+	color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+	display: none;
+	background-color: #262626;
+	padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+	float: right;
+	padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
+}
+
+.shadow {
+	-webkit-box-shadow: 3px 3px 5px 6px #ccc;
+	/* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+	-moz-box-shadow: 3px 3px 5px 6px #ccc; /* Firefox 3.5 - 3.6 */
+	box-shadow: 3px 3px 5px 6px #ccc;
+	/* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+.carddiv {
+	height: 150px;
+}
+
+table {
+	font-size: 15px;
+}
+
+.my-custom-scrollbar {
+	position: relative;
+	height: 450px;
+	overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+	display: block;
+}
+
+th, td {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+
+	<div class="sidenav shadow">
+		<a th:text="${name}"></a>
+
+		<hr>
+		<a href="admindeshboard"> <i class="fa fa-home" aria-hidden="true"></i>
+			Deshboard
+		</a>
+		<button class="dropdown-btn">
+			Company <i class="fa fa-caret-down"></i>
+		</button>
+		<div class="dropdown-container">
+			<a href="addbranch">Add Branch</a> <a href="createdepartment">Department</a>
+			<a href="createdesignation">Designation</a>
+
+
+		</div>
+		<button class="dropdown-btn">
+			Employee <i class="fa fa-caret-down"></i>
+		</button>
+		<div class="dropdown-container">
+			<a href="employee">Create Employee</a> <a href="allemployee">Employee
+				History</a> <a href="shiftemployee">shift employee</a> <a
+				href="empinfoupdate">employee Info update</a> <a href="empstatus">employee
+				Status</a>
+
+		</div>
+		<button class="dropdown-btn">
+			Salary <i class="fa fa-caret-down"></i>
+		</button>
+		<div class="dropdown-container">
+			<a href="salary">Create Salary </a> <a href="salarydetails">Salary
+				Details </a>
+		</div>
+		<button class="dropdown-btn">
+			Attendance <i class="fa fa-caret-down"></i>
+		</button>
+		<div class="dropdown-container">
+			<a href="loginattendance">Login Attendance</a> <a
+				href="logoutattendancepage">Logout Attendance</a> <a
+				href="attendancepage">All Attendance</a>
+		</div>
+		<button class="dropdown-btn">
+			Leave management <i class="fa fa-caret-down"></i>
+		</button>
+		<div class="dropdown-container">
+
+			<a href="leaveconfirmpage">Approve or deny</a> <a
+				href="leavelistpageadmin">All leave</a>
+		</div>
+		<button class="dropdown-btn">
+			Holidays <i class="fa fa-caret-down"></i>
+		</button>
+		<div class="dropdown-container">
+			<a href="addholiday">Add holiday</a> <a href="manageholiday">Manage
+				Holiday</a>
+		</div>
+		<a href="logout">Logout</a>
+
+
+	</div>
+
+
+
+
+	<div class="main">
+
+
+		<div class="container mt-2 ">
+			<div class="row justify-content-md-center mt-5 ">
+				<h4 class="text-center">Deshboard</h4>
+				<div class="col-12 mt-5"></div>
+				<div class="col-3 carddiv bg-success text-center ">
+					<h2 class="text-center mt-3" th:text="${Totaolemp}"
+						style="color: white; font-size: 50px; font-weight: bold;"></h2>
+					<h4 class="text-center mt-2"
+						style="color: white; font-weight: bold;">Total Employee</h4>
+				</div>
+				<div class="col-3 carddiv bg-info text-center ml-5 ">
+					<h2 class="text-center mt-3" th:text="${TotaolDepart}"
+						style="color: white; font-size: 50px; font-weight: bold;"></h2>
+					<h4 class="text-center mt-2"
+						style="color: white; font-weight: bold;">Total Department</h4>
+				</div>
+				<div class="col-3 carddiv bg-warning text-center ml-5 ">
+					<h2 class="text-center mt-3" th:text="${TotaolBranch}"
+						style="color: white; font-size: 50px; font-weight: bold;"></h2>
+					<h4 class="text-center mt-2"
+						style="color: white; font-weight: bold;">Total Branch</h4>
+				</div>
+			</div>
+			<div class="table-wrapper-scroll-y my-custom-scrollbar mt-5">
+				<div class="p-3 mb-2 bg-success text-center text-white">Today
+					Attendance</div>
+				<table id="tabledata" class="table table-bordered mt-1">
+					<thead>
+						<tr>
+							<th scope="col">Employee id</th>
+							<th scope="col">attendance date</th>
+							<th scope="col">login time</th>
+							<th scope="col">logout time</th>
+							<th scope="col">Status</th>
+
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="em:${allattendance}">
+							<td th:text="${em.empid}"></td>
+							<td th:text="${em.attendancedate}"></td>
+							<td th:text="${em.logintime}"></td>
+							<td th:text="${em.logouttime}"></td>
+							<td th:text="${em.status}"></td>
+						</tr>
+					</tbody>
+				</table>
+
+
+
+			</div>
+
+		</div>
+
+
+
+
+	</div>
+
+	<script>
+		/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+		var dropdown = document.getElementsByClassName("dropdown-btn");
+		var i;
+
+		for (i = 0; i < dropdown.length; i++) {
+			dropdown[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var dropdownContent = this.nextElementSibling;
+				if (dropdownContent.style.display === "block") {
+					dropdownContent.style.display = "none";
+				} else {
+					dropdownContent.style.display = "block";
+				}
+			});
+		}
+	</script>
+
+</body>
+</html>
